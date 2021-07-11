@@ -1,0 +1,492 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smart Fashion</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Smart Shop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<!-- //for-mobile-apps -->
+<link href="{% static 'user/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static 'user/css/flexslider.css' %}" type="text/css" media="screen" />
+<link href="{% static 'user/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script type="text/javascript" src="{% static 'user/js/jquery-2.1.4.min.js' %}"></script>
+<!-- //js -->
+<!-- single -->
+<script src="{% static 'user/js/imagezoom.js' %}"></script>
+<script src="{% static 'user/js/jquery.flexslider.js' %}"></script>
+<!-- single -->
+<!-- cart -->
+	<script src="{% static 'user/js/simpleCart.min.js' %}"></script>
+<!-- cart -->
+<!-- for bootstrap working -->
+	<script type="text/javascript" src="{% static 'user/js/bootstrap-3.1.1.min.js' %}"></script>
+<!-- //for bootstrap working -->
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
+<script src="{% static 'user/js/jquery.easing.min.js' %}"></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+	<div class="container">
+		<ul>
+			<li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Free and Fast Delivery</li>
+			<li><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Free shipping On all orders</li>
+			
+		</ul>
+	</div>
+</div>
+<!-- //header -->
+<!-- header-bot -->
+<div class="header-bot">
+	<div class="container">
+		<div class="col-md-3 header-left">
+			
+		</div>
+		<div class="col-md-6 header-middle">
+			
+		</div>
+		<div class="col-md-3 header-right footer-bottom">
+			<ul>{% if username is None %}
+				<li><a href="#" class="use1" data-toggle="modal" ><span>Login</span></a>
+					
+				</li>
+				{% else %}
+				<li><a href="#" class="use1" data-toggle="modal" ><span>{{ username }}</span></a>
+				{% endif %}
+				
+				<li><a class="twi" href="#"></a></li>
+				<li><a class="twi" href="#"></a></li>
+				<li><a class="insta" href="#"></a></li>
+				<li><a class="insta" href="#"></a></li>
+				
+				<div class="col-md-3 header-right footer-bottom">
+				
+				
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!-- //header-bot -->
+<!-- banner -->
+<div class="ban-top">
+	<div class="container">
+		<div class="top_nav_left">
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+				  <ul class="nav navbar-nav menu__list">
+					<li class="active menu__item "><a class="menu__link" href="{% url 'userpage' %}">Home <span class="sr-only">(current)</span></a></li>
+					<li class="dropdown menu__item">
+						
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-sm-6 multi-gd-img1 multi-gd-text ">
+										
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+					</li>
+					<li class="dropdown menu__item">
+						<!-- <a href="{% url 'userlogout' %}">Logout</a> -->
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-sm-3 multi-gd-img">
+										
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										
+									</div>
+									<div class="col-sm-6 multi-gd-img multi-gd-text ">
+										
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+					
+				  
+				</div>
+			  </div>
+			</nav>	
+		</div>
+		<div class="top_nav_right">
+			<div class="cart box_1">
+						<a href="#">
+							<h3> <div class="total">
+								<i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
+								 (<span  ></span>{{count}} items)
+								</div>
+								
+							</h3>
+						</a>
+						<p><a href="{% url 'carthome' %}" class="simpleCart_empty">Cart Item</a></p>
+						
+			</div>	
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+<!-- //banner-top -->
+<!-- banner -->
+
+<!-- //banner -->
+<!-- single -->
+
+<!--link-->
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--crop url-->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.0.0/cropper.min.css" integrity="sha256-FeDcPwV8ZgxG1MU5L/b2i8clOmqZJKK0eyDHqrQaXxY=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.js"></script>
+<title>Document</title>
+
+<style>
+
+
+.preview {
+  overflow: hidden;
+  width:100%; 
+  height: 200px;
+} 
+
+
+</style>
+
+<!--link end-->
+<div class="container mt-5 "  >
+	<div class="row " >
+		<div class="col-md-12 p-4" >
+			<div class="col-md-3">
+				<div class=" preview e-navlist e-navlist--active-bg"></div>
+                <div id="image-box" class="image-container" style="height: 200px; width: 200px;"></div>
+				<button class="btn btn-outline-info pt-2" id="crop-btn"  style=" margin-top: 10px; display: none;" type="button">Crop</button>
+			</div>
+			<div class="col-md-7 p-2" style="border: ridge 1px rgb(8, 8, 8); color: sandybrown;" >
+				<div class="col-md-12">
+					<div class="col-md-8">
+						<div>
+							{% if img.image %}
+							<img style="height: 140px; width: 140px; border-radius: 70px;" id="profile" src="{{img.image.url}}" alt="">
+							{% else%}
+							<img style="height: 140px; width: 140px;" id="profile" src="" alt="">
+							{% endif %}
+						</div>
+						<div class="picture">
+							<form action="" method="POST" enctype="multipart/form-data" id="post-form">
+							  {% csrf_token%}
+							  {{form.image}}
+							<button class="btn btn-outline-info pt-2" id="confirm-btn"  style="margin-top: 10px; display: none;"   type="submit" >Submit</button>
+							</form>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div> <h6>WelCome Back!!!</h6><h4 class="text-primary">{{user.FirstName}}</h4></div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="col-md-2">
+				<button class="btn btn-secondary"><i class="fa fa-sign-out"><a href="{% url 'userlogout' %}" style="color: rgb(226, 210, 210);">LogOut</a></i></button>
+			</div>
+
+			
+			    <div class="col-md-3"></div>
+				    <div class="col-md-7 pt-3">
+						<div class="col-md-12">
+							<div class="col-md-6">
+								<div class="card">
+									<div class="card-body">
+									<h6 class="card-title font-weight-bold pl-2">{{user.FirstName}}</h6>
+									<p class="card-text  pl-2">{{user.address}}</p>
+									<p class="card-text  pl-2">{{user.Phone}}</p>
+									<p class="card-text  ">{{user.Email}}</p>
+									<button type="button" id="myBtn" class="btn btn-primary ml-5" data-toggle="modal" data-target="#myModal">Edit</button>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 pt-5">
+								<button class="btn btn-primary"  data-toggle="modal" data-target="#addaddress">Add Address</button>
+							</div>
+						
+					</div>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+			
+		</div>
+		
+	</div>
+</div>
+            <!-- The Modal -->
+			<div class="col-md-12 ">
+				<div id="myModal" class="modal">
+				  <!-- Modal content -->
+				  <div class="modal-content">
+					<!-- <span class="close">&times;</span> -->
+					<a href="./"> close </a>
+					<form action="{% url 'pro_edit' user.id%}" method="POST">{% csrf_token %}
+						<div class="row ">
+							<div class="col-6 p-4">
+							  <label for="">firstname</label>
+							  <div>{{form.FirstName}}</div>
+							</div>
+							<div class="col p-4">
+								<label for="">Email</label>
+								<div>{{form.Email}}</div>
+							</div>
+						  
+						  <div class="col-6 p-4">
+							<label for="">UserName</label>
+							 <div>{{form.UserName}}</div> 
+						  </div>
+						  <div class="col-6 p-4">
+							<label for="">Phone</label>
+							  <div>{{form.Phone}}</div>
+						  </div>
+						  <div class="col-6 p-4">
+							<label for="">address</label>
+							  <div>{{form.address}}</div>
+						  </div>
+						  <div class="col-6 p-4"><button type="submit" class="btn btn-warning" data-dismiss="modal">Save</button> </div>
+					   </form>
+				  </div>
+				</div>
+			  </div>
+<!--end modal-->
+<!--forst modal-->
+<div class="col-md-12 ">
+	<div id="addaddress" class="modal">
+	  <!-- Modal content -->
+	  <div class="modal-content">
+		<!-- <span class="close">&times;</span> -->
+		<a href="./"> close </a>
+		<form action="{% url 'pro_add' %}" method="POST">{% csrf_token %}
+			<div class="row ">
+				<div class="col-6 p-4">
+				  <label for="">firstname</label>
+				  <div>{{form.FirstName}}</div>
+				</div>
+				<div class="col p-4">
+					<label for="">Email</label>
+					<div>{{form.Email}}</div>
+				</div>
+			  
+			  <div class="col-6 p-4">
+				<label for="">UserName</label>
+				 <div>{{form.UserName}}</div> 
+			  </div>
+			  <div class="col-6 p-4">
+				<label for="">Phone</label>
+				  <div>{{form.Phone}}</div>
+			  </div>
+			  <div class="col-6 p-4">
+				<label for="">address</label>
+				  <div>{{form.address}}</div>
+			  </div>
+			  <div class="col-6 p-4"><button type="submit" class="btn btn-warning" data-dismiss="modal">Save</button> </div>
+		   </form>
+<!--end modal-->
+
+
+
+
+<!--crop start-->
+<script>
+	// image-box is the id of the div element that will store our cropping image preview
+	const imagebox  = document.getElementById('image-box')
+        // crop-btn is the id of button that will trigger the event of change original file with cropped file.
+	const crop_btn = document.getElementById('crop-btn')
+	// id_image is the id of the input tag where we will upload the image
+	const input = document.getElementById('id_image')
+	var allowedExtensions = 
+				/(\.jpg|\.jpeg|\.png|\.gif)$/i;
+				
+	var filePath = input.value;
+
+	// When user uploads the image this event will get triggered
+	input.addEventListener('change', ()=>{
+		if (!allowedExtensions.exec(input.value)) {
+			alert('Invalid file type');
+			input.value = '';
+
+		} 
+		else 
+		{
+	  // Getting image file object from the input variable
+	  const img_data = input.files[0]
+	  // createObjectURL() static method creates a DOMString containing a URL representing the object given in the parameter.
+	  // The new object URL represents the specified File object or Blob object.
+	  const url = URL.createObjectURL(img_data)
+	  
+	  // Creating a image tag inside imagebox which will hold the cropping view image(uploaded file) to it using the url created before.
+	  imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+
+	  // Storing that cropping view image in a variable
+	  const image = document.getElementById('image')
+
+	  // Displaying the image box
+	  document.getElementById('image-box').style.display = 'block'
+	  // Displaying the Crop buttton
+	  document.getElementById('crop-btn').style.display = 'block'
+	  // Hiding the Post button
+	  document.getElementById('confirm-btn').style.display = 'none'
+
+	  // Creating a croper object with the cropping view image
+	  // The new Cropper() method will do all the magic and diplay the cropping view and adding cropping functionality on the website
+	  // For more settings, check out their official documentation at https://github.com/fengyuanchen/cropperjs
+	  const cropper = new Cropper(image, {
+	  autoCropArea: 1,
+	  viewMode: 1,
+	  scalable: false,
+	  zoomable: false,
+	  movable: false,
+      aspectRatio: 14/16,
+      preview: '.preview',
+	  minCropBoxWidth: 200,
+	  minCropBoxHeight: 200,
+	  })
+
+	  // When crop button is clicked this event will get triggered
+	  crop_btn.addEventListener('click', ()=>{
+	    // This method coverts the selected cropped image on the cropper canvas into a blob object
+	    cropper.getCroppedCanvas().toBlob((blob)=>{
+	      console.log(blob)
+	      // Gets the original image data
+	      let fileInputElement = document.getElementById('id_image');
+          console.log(fileInputElement)
+	      // Make a new cropped image file using that blob object, image_data.name will make the new file name same as original image
+	      let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+	      // Create a new container
+	      let container = new DataTransfer();
+	      // Add the cropped image file to the container
+	      container.items.add(file);
+          console.log(container.files)
+          console.log(container,"container ")
+
+	      // Replace the original image file with the new cropped image file
+	      fileInputElement.files = container.files;
+          console.log(fileInputElement)
+
+        
+	      // Hide the cropper box
+	      document.getElementById('image-box').style.display = 'none'
+	      // Hide the crop button
+	      document.getElementById('crop-btn').style.display = 'none'
+	      // Display the Post button
+	      document.getElementById('confirm-btn').style.display = 'block'
+        //document.getElementById('profile').setAttribute("src","http://127.0.0.1:8000/media/images/"+img_data.name)
+	      });
+	    });
+		}
+	});	
+</script>
+
+<!--crop end-->
+
+<!-- //single -->
+<!-- //product-nav -->
+
+<!-- footer -->
+
+		<div class="col-md-9 footer-right">
+			<div class="col-sm-6 newsleft">
+				
+			</div>
+			<div class="col-sm-6 newsright">
+				
+			</div>
+			<div class="clearfix"></div>
+			<div class="sign-grds">
+				<div class="col-md-4 sign-gd">
+				
+				</div>
+				
+				<div class="col-md-4 sign-gd-two">
+					<h4>Store Information</h4>
+					<ul>
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Address : 1234k Avenue, 4th block, <span>Newyork City.</span></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : <a href="mailto:info@example.com">info@example.com</a></li>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Phone : +1234 567 567</li>
+					</ul>
+				</div>
+				<div class="col-md-4 sign-gd flickr-post">
+					
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<!-- <p class="copy-right">&copy 2016 Smart Shop. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p> -->
+	</div>
+</div>
+<!-- //footer -->
+<!-- login -->
+			
+<!-- //login -->
+
+
+
+</body>
+<script>
+	function myFunction(){
+		alert("Item added to Cart !")
+	}
+</script>
+
+<!-- <script type="text/javascript">
+	console.log('this is test');
+
+	if (localStorage.getItem('cart_add')==null){
+		var cart = {};
+	}else{
+		cart = JSON.parse(localStorage.getItem('cart_add'));
+	}
+	$ (document).on('click','atc',function(){
+      console.log("The 	add to cart button is clicked");
+	  var Item_id = this.id.toString();
+	  console.log(Item_id);
+	  if (cart_add[Item_id] !=undefined ){
+		cart_add[Item_id] = cart_add[Item_id] +1;
+ 	  }else{
+		cart_add[Item_id] = 1;
+		   
+	   }console.log(cart_add);
+	   localStorage.setItem('cart_add',JSON.stringify(cart_add));
+
+	});
+</script> -->
+</html>

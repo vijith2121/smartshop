@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+{% load static%}
+
+{% block content%}
+
+<div class="container bg-dark"  style="margin-top: 190px; width: 500px; height: 300px ; padding-top: 60px;">
+
+    <div class="col-md-6 m-auto" >
+        <form action="{% url 'insert_category' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="p-1 text-white ">Add Category Here</div>
+            {{ form.category }} 
+            <br> <br>
+            <div class="p-1 text-white ">Add Discount</div>
+           
+
+            {{ form.discount }}
+            <br><br>
+            <button type="submit" name="submit" class=" btn btn-warning text-white">Submit</button>
+            </form>
+    </div>
+</div>
+    
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+
+{% load static%}
+
+{% block content%}
+
+<div class="container bg-dark"  style="margin-top: 190px; width: 500px; height: 300px ; padding-top: 60px;">
+
+    <div class="col-md-6 m-auto" >
+        <form action="" method="POST" >
+            {% csrf_token %}
+        
+            {{ form }} 
+            <br> <br>
+    
+  
+            <button type="submit" name="submit" class=" btn btn-warning text-white">Edit</button>
+            </form>
+    </div>
+</div>
+    
+
+{% endblock %}

@@ -1,0 +1,160 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login Template</title>
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static 'user/userlogin/css/login.css' %}">
+</head>
+<body>
+  <main>
+    <div class="container-fluid">
+        
+      <div class="row">
+        
+        <div class="col-md-8 login-section-wrapper m-auto">
+          <!-- <div class="brand-wrapper "> -->
+            <a class="col-md-2 m-auto" href="{% url 'userpage' %}">HOME</a>
+            <div class="col-md-2"><img src="{% static 'user/images/logo3.jpg' %}" alt="logo" class="logo"></div>
+            
+            
+          <!-- <div class="login-wrapper my-auto"> -->
+            <h1 class="login-title">Sign Up</h1>
+            <form method="POST"  id="customerForm">
+                 {% csrf_token %}
+              <div class="form-group">
+                <!-- <h4>{{form.FirstName.label}}</h4>
+                {{form.FirstName}} -->
+                <label for="Firstname">FirstName</label>
+                <input type="text" name="FirstName" class="form-control" placeholder="Username">
+              </div>
+              <div class="form-group mb-4">
+                <!-- <h4>{{form.Email.label}}</h4>
+                {{form.Email}} -->
+                <label for="Email">Email</label>
+                <input type="email" name="Email"  class="form-control" placeholder="enter your Email">
+              </div>
+              <div class="form-group mb-4">
+                <!-- <h4>{{form.UserName.label}}</h4>
+                {{form.UserName}} -->
+                <label for="UserName">UserName</label>
+                <input type="text" name="UserName"  class="form-control" placeholder="enter your UserName">
+              </div>
+              <div class="form-group mb-4">
+                <!-- <h4>{{form.Password.label}}</h4>
+                {{form.Password}} -->
+                <label for="password">Password</label>
+                <input type="password" name="Password"  class="form-control" placeholder="enter your Passsword">
+              </div>
+              
+              <div class="form-group mb-4">
+                <!-- <h4>{{form.Phone.label}}</h4>
+                    {{form.Phone}} -->
+                    <label for="Phone">Phone</label>
+                <input type="number" name="Phone"  class="form-control" placeholder="mobile">
+              </div>
+              
+              
+              <button type="submit" class="btn btn-block login-btn bg-warning " >REGISTER NOW</button>
+               
+            </form>
+            
+            
+          <!-- </div> -->
+        </div>
+        <!-- <div class="col-sm-6 px-0 d-none d-sm-block"> -->
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+  <!--js validator-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#customerForm").validate({
+  
+      rules:{
+        FirstName: {
+              required: true,
+              minlength: 3
+  
+          },
+  
+          UserName: {
+              required: true,
+              minlength: 3
+          },
+  
+        Email: {
+              required: true,
+              email: true
+          },
+  
+          Password: {
+              required: true,
+              minlength: 4,
+  
+          },
+  
+     
+  
+          Phone : {
+              required: true,
+              minlength: 10,
+              maxlength: 10,
+              digits: true
+          }
+  
+  },
+      messages: {
+        FirstName: {
+              required: "Please enter your firstname",
+              minlength: "Enter at least 3 characters"
+          },
+  
+         
+  
+          UserName: {
+              required: "Please enter a username",
+              minlength: "Enter at least 3 characters"
+  
+  
+          },
+  
+          Email: {
+              required: "Please enter your email",
+              email: "Enter a valid email"
+          },
+  
+          Phone:{
+              required: "Please enter your mobile number",
+              digits: "Enter a valid phone number",
+              minlength: "Enter a valid phone number",
+              maxlength: "Enter a valid phone number"
+          }
+  
+  
+      }
+  
+  
+      })
+  
+  
+  
+  })
+   
+  </script>
+  <!--end js-->
+</body>
+</html>

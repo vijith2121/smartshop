@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+
+    <style>
+      
+        body {
+          background: #ddd;
+          min-height: 100vh;
+          vertical-align: middle;
+          display: flex;
+          font-family: sans-serif;
+          font-size: 0.8rem;
+          font-weight: bold
+      }
+      
+      .title {
+          margin-bottom: 5vh
+      }
+      
+      .card {
+          margin: auto;
+          max-width: 950px;
+          width: 90%;
+          box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          border-radius: 1rem;
+          border: transparent
+      }
+      
+      @media(max-width:767px) {
+          .card {
+              margin: 3vh auto
+          }
+      }
+      
+      .cart {
+          background-color: #fff;
+          padding: 4vh 5vh;
+          border-bottom-left-radius: 1rem;
+          border-top-left-radius: 1rem
+      }
+      
+      @media(max-width:767px) {
+          .cart {
+              padding: 4vh;
+              border-bottom-left-radius: unset;
+              border-top-right-radius: 1rem
+          }
+      }
+      
+      .summary {
+          background-color: #ddd;
+          border-top-right-radius: 1rem;
+          border-bottom-right-radius: 1rem;
+          padding: 4vh;
+          color: rgb(65, 65, 65)
+      }
+      
+      @media(max-width:767px) {
+          .summary {
+              border-top-right-radius: unset;
+              border-bottom-left-radius: 1rem
+          }
+      }
+      
+      .summary .col-2 {
+          padding: 0
+      }
+      
+      .summary .col-10 {
+          padding: 0
+      }
+      
+      .row {
+          margin: 0
+      }
+      
+      .title b {
+          font-size: 1.5rem
+      }
+      
+      .main {
+          margin: 0;
+          padding: 2vh 0;
+          width: 100%
+      }
+      
+      .col-2,
+      .col {
+          padding: 0 1vh
+      }
+      
+      a {
+          padding: 0 1vh
+      }
+      
+      .close {
+          margin-left: auto;
+          font-size: 0.7rem
+      }
+      
+      img {
+          width: 3.5rem
+      }
+      
+      .back-to-shop {
+          margin-top: 4.5rem
+      }
+      
+      h5 {
+          margin-top: 4vh
+      }
+      
+      hr {
+          margin-top: 1.25rem
+      }
+      
+      form {
+          padding: 2vh 0
+      }
+      
+      select {
+          border: 1px solid rgba(0, 0, 0, 0.137);
+          padding: 1.5vh 1vh;
+          margin-bottom: 4vh;
+          outline: none;
+          width: 100%;
+          background-color: rgb(247, 247, 247)
+      }
+      
+      input {
+          border: 1px solid rgba(0, 0, 0, 0.137);
+          padding: 1vh;
+          margin-bottom: 4vh;
+          outline: none;
+          width: 100%;
+          background-color: rgb(247, 247, 247)
+      }
+      
+      input:focus::-webkit-input-placeholder {
+          color: transparent
+      }
+      
+      .btn {
+          background-color: #000;
+          border-color: #000;
+          color: white;
+          width: 100%;
+          font-size: 0.7rem;
+          margin-top: 4vh;
+          padding: 1vh;
+          border-radius: 0
+      }
+      
+      .btn:focus {
+          box-shadow: none;
+          outline: none;
+          box-shadow: none;
+          color: white;
+          -webkit-box-shadow: none;
+          transition: none
+      }
+      
+      .btn:hover {
+          color: white
+      }
+      
+      a {
+          color: black
+      }
+      
+      a:hover {
+          color: black;
+          text-decoration: none
+      }
+      
+      #code {
+          background-image: linear-gradient(to left, rgba(255, 255, 255, 0.253), rgba(255, 255, 255, 0.185)), url("https://img.icons8.com/small/16/000000/long-arrow-right.png");
+          background-repeat: no-repeat;
+          background-position-x: 95%;
+          background-position-y: center
+      }
+      </style>
+
+      <style>
+          /* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+      </style>
+    
+    
+
+    
+</head>
+<body>
+  <div class="container">
+    <!-- <div class="row " style="margin-left: 100px; margin-right: 100px;"> -->
+            <!-- <div class="title">
+                <div class="row">
+                    <div class="col">
+                    </div> 
+                </div>
+            </div> -->
+            <div ><h3 style="color: #FDA30E;">SMART SHOP</h3> </div>
+            <a href="{% url 'userpage' %}">&leftarrow; Continue shopping</a><span class="text-muted"></span>
+            <div class="row">
+                
+                <div class="col-md-9 p-2" style="background-color:rgb(206, 195, 180);">
+                    <div class="row pt-4">
+                        <form action="{% url 'place_order' %}" method="POST" id="form-button">{% csrf_token %}
+                        {% for set in querryset %}
+                    <div class="card col-md-3" style="padding: 0;"> 
+                        
+                        <div class="card-body">
+                            <input style="float: left;" type="radio" name="address" id="{{set.id}}" value="{{set.id}}">
+                            
+                          <h5 class="card-title">{{set.firstname}}</h5>
+                          <p class="card-text">{{set.address1}}</p>
+                          <a style="color: #FDA30E;" onclick="return confirm('You want delete ?')" href="{% url 'deladdress' set.id %}">Remove</a>
+                          <a style="color: #FDA30E;" href=""></a>
+                        </div>
+                    </div>
+                
+                    {% endfor%}</form>
+                
+                    </div>
+                </div>
+            
+                <div class="col-md-3  ">
+                    
+                        <h5><b>Summary</b></h5>
+                    
+                    <hr>
+                    <div class="row">
+                        <div class="col" style="padding-left:0;">Total Price</div>
+                        <div class="col text-right">INR {{total}}</div>
+                    </div> 
+                    <div class="p-2"></div>
+                    <div class="row">
+                        <div class="col" style="padding-left:0;">Coupon</div>
+                        <div class="col text-right" id="amount"></div>
+                    </div>
+                    
+                    <div class="row" style="border-top: 1px solid rgba(0,0,0,.1); padding: 2vh 0;">
+                        <div class="col">GRAND TOTAL</div>
+                        <div class="col text-right" id="grand">INR {{total}}</div>
+                    
+                    <!-- </div> <a class="btn" id="form-button">Make Payment</a> -->
+                    <button  class="btn" type="submit" form="form-button">Make Payment</button>
+                    <form action="#" method="POST">{% csrf_token%}
+                    <div class="row  input pt-2">
+                        <div class="col-md-8 mt-4 ">
+                            <input type="text" name='coupon' id="coupon" value="" placeholder="enter coupon code">
+                        </div>
+                        <div class="col-md-4 " style="margin-top: -4px;">
+                            <button  class="btn btn-warning"  type="button" id="btncoupon" onclick="applyCoupon()">Apply</button>
+                        </div>
+                    </form>
+                       
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-3"><button id="myBtn" class="btn-warning">Add address</button></div>
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <form action="{% url 'address' %}" method="POST">{% csrf_token %}
+                    <div class="row ">
+                        <div class="col-6 p-4">
+                          <label for="">firstname</label>
+                          {{form.firstname}}
+                        </div>
+                        <div class="col p-4">
+                            <label for="">lastname</label>
+                            {{form.lastname}}
+                        </div>
+                      
+                      <div class="col-6 p-4">
+                        <label for="">email</label>
+                          {{form.email}}
+                      </div>
+                      <div class="col-6 p-4">
+                        <label for="">address1</label>
+                          {{form.address1}}
+                      </div>
+                      <div class="col-6 p-4">
+                        <label for="">address2</label>
+                          {{form.address2}}
+                      </div>
+                      <div class="col-6 p-4">
+                        <label for="">phone</label>
+                          {{form.phone}}
+                      </div>
+                      <div class="col-6 p-4">
+                        <label for="">city</label>
+                          {{form.city}}
+                      </div>
+                      <div class="col-6 p-4">
+                        <label for="">state</label>
+                          {{form.state}}
+                      </div>
+                      <div class="col-6 p-4">
+                        <label for="">country</label>
+                          {{form.country}}
+                      </div>
+                      <div class="col-6 p-4"><button type="submit" class="btn btn-warning" data-dismiss="modal">Save</button> </div>
+                            
+                    
+                   </form>
+              </div>
+            
+            </div>
+
+    <div class="row border-top border-bottom "> {% for cart_item in cart_items %}
+        <div class="row main align-items-center ">
+            <div class="col-md-4"><img class="img-fluid" src="{{ cart_item.product.image1.url }}"></div>
+            <div class="col">
+                <div class="row text-muted">Shirt</div>
+                <div class="row">{{ cart_item.product.product}}</div>
+            </div>
+            
+            <div class="col"><a href="#" class="border">QTY {{ cart_item.quantity }}</a></div>
+            <div class="col">{{ cart_item.product.price }}<p>each</p> </div>
+            <div class="col">  INR {{ cart_item.sub_total }} </div>    
+        </div>
+    {% endfor %}
+
+
+ 
+    <!-- </div> -->
+
+<!-- </div><div class="back-to-shop"><a href="{% url 'userpage' %}">&leftarrow; Continue shopping</a><span class="text-muted"></span></div> -->
+<script>
+function applyCoupon(){
+    let code = $("#coupon").val()
+    let data = {
+        'csrfmiddlewaretoken':'{{csrf_token}}',
+        'code':code
+    };
+    $.ajax({
+        url: "{% url 'checkcoupon'%}",
+        method: 'POST',
+        data: data,
+        dataType: "json",
+        success:function(data){
+            if(data == 'false'){
+                alert('Enter Valid Coupon');
+            }
+            $("#amount").html("INR "+data.total);
+            $("#grand").html("INR "+data.amount);
+        }
+    })
+}
+</script>
+
+
+<script>
+    // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+
+</body>
+
+</html>
+
+
+    
+        
+        
+        
+        

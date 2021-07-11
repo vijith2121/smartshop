@@ -1,0 +1,358 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smart Fashion</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Smart Shop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<!-- //for-mobile-apps -->
+<link href="{% static 'user/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static 'user/css/flexslider.css' %}" type="text/css" media="screen" />
+<link href="{% static 'user/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script type="text/javascript" src="{% static 'user/js/jquery-2.1.4.min.js' %}"></script>
+<!-- //js -->
+<!-- single -->
+<script src="{% static 'user/js/imagezoom.js' %}"></script>
+<script src="{% static 'user/js/jquery.flexslider.js' %}"></script>
+<!-- single -->
+<!-- cart -->
+	<script src="{% static 'user/js/simpleCart.min.js' %}"></script>
+<!-- cart -->
+<!-- for bootstrap working -->
+	<script type="text/javascript" src="{% static 'user/js/bootstrap-3.1.1.min.js' %}"></script>
+<!-- //for bootstrap working -->
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
+<script src="{% static 'user/js/jquery.easing.min.js' %}"></script>
+</head>
+<body>
+<!-- header -->
+<div class="header">
+	<div class="container">
+		<ul>
+			<li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Free and Fast Delivery</li>
+			<li><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Free shipping On all orders</li>
+			
+		</ul>
+	</div>
+</div>
+<!-- //header -->
+<!-- header-bot -->
+<div class="header-bot">
+	<div class="container">
+		<div class="col-md-3 header-left">
+			
+		</div>
+		<div class="col-md-6 header-middle">
+			
+		</div>
+		<div class="col-md-3 header-right footer-bottom">
+			<ul>{% if username is None %}
+				<li><a href="#" class="use1" data-toggle="modal" ><span>Login</span></a>
+					
+				</li>
+				{% else %}
+				<li><a href="#" class="use1" data-toggle="modal" ><span>{{ username }}</span></a>
+				{% endif %}
+				
+				<li><a class="twi" href="#"></a></li>
+				<li><a class="twi" href="#"></a></li>
+				<li><a class="insta" href="#"></a></li>
+				<li><a class="insta" href="#"></a></li>
+				
+				<div class="col-md-3 header-right footer-bottom">
+				
+				
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!-- //header-bot -->
+<!-- banner -->
+<div class="ban-top">
+	<div class="container">
+		<div class="top_nav_left">
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+				  <ul class="nav navbar-nav menu__list">
+					<li class="active menu__item "><a class="menu__link" href="{% url 'userpage' %}">Home <span class="sr-only">(current)</span></a></li>
+					<li class="dropdown menu__item">
+						
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-sm-6 multi-gd-img1 multi-gd-text ">
+										
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+					</li>
+					<li class="dropdown menu__item">
+						<!-- <a href="{% url 'userlogout' %}">Logout</a> -->
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-sm-3 multi-gd-img">
+										
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										
+									</div>
+									<div class="col-sm-6 multi-gd-img multi-gd-text ">
+										
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+					
+				  
+				</div>
+			  </div>
+			</nav>	
+		</div>
+		<div class="top_nav_right">
+			<div class="cart box_1">
+						<a href="">
+							<h3> <div class="total">
+								<i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
+							 (<span  >{{count}}</span> items)</div>
+								
+							</h3>
+						</a>
+						<p><a href="{% url 'carthome' %}" class="simpleCart_empty">Cart Item</a></p>
+						
+			</div>	
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+<!-- //banner-top -->
+<!-- banner -->
+
+<!-- //banner -->
+<!-- single -->
+<div class="single">
+	<div class="container">
+		<div class="col-md-6 single-right-left animated wow slideInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInUp;">
+			
+			<div class="grid images_3_of_2">
+				<div class="flexslider">
+					<!-- FlexSlider -->
+						<script>
+						// Can also be used with $(document).ready()
+							$(window).load(function() {
+								$('.flexslider').flexslider({
+								animation: "slide",
+								controlNav: "thumbnails"
+								});
+							});
+						</script>
+					<!-- //FlexSlider-->
+					<ul class="slides">
+						<li data-thumb="{{ product.image1.url}}">
+							<div class="thumb-image"> <img src="{{ product.image1.url}}" data-imagezoom="true" class="img-responsive"> </div>
+						</li>
+						<li data-thumb="{{ product.image2.url}}">
+							<div class="thumb-image"> <img src="{{ product.image2.url}}" data-imagezoom="true" class="img-responsive"> </div>
+						</li>	
+						<li data-thumb="{{ product.image3.url}}">
+							<div class="thumb-image"> <img src="{{ product.image3.url}}" data-imagezoom="true" class="img-responsive"> </div>
+						</li>
+						<li data-thumb="{{ product.image4.url}}">
+							<div class="thumb-image"> <img src="{{ product.image4.url}}" data-imagezoom="true" class="img-responsive"> </div>
+						</li>	
+					</ul>
+					
+				</div>	
+			</div>
+		</div>
+		
+		<div class="col-md-6 single-right-left simpleCart_shelfItem animated wow slideInRight animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInRight;">
+					<h3>{{product}}</h3>
+					<p><span class="item_price">INR {{product.last_price}}</span> <del>- </del></p>
+					<!-- <div class="rating1">
+						<span class="starRating">
+							<input id="rating5" type="radio" name="rating" value="5">
+							<label for="rating5">5</label>
+							<input id="rating4" type="radio" name="rating" value="4">
+							<label for="rating4">4</label>
+							<input id="rating3" type="radio" name="rating" value="3" checked="">
+							<label for="rating3">3</label>
+							<input id="rating2" type="radio" name="rating" value="2">
+							<label for="rating2">2</label>
+							<input id="rating1" type="radio" name="rating" value="1">
+							<label for="rating1">1</label>
+						</span>
+					</div> -->
+				<form action="{% url 'add_cart' product.id %}" method="POST">
+					{% csrf_token%}
+					<div class="description">
+						<button type="submit" class="btn btn-warning ">Add to Cart</button>
+					
+					</div>
+					   <div class="row"><div class="item-option-select description col-md-3">
+						<h6> <b> </b></h6>
+						<!-- <select name="size" class="form-control">
+							
+							{% for i in product.variation_set.size %}
+							<option value="{{i.variation_value | lower }}">{{i.variation_value | capfirst}}</option>
+							
+							{% endfor %}
+							<option value="small">small</option>
+							<option value="medium">medium</option>
+							<option value="large">large</option>
+							
+
+						</select> -->
+					</div></div>
+						
+                       </div>
+					</div>
+					
+					</div>
+				</form>
+					<!-- <div class="occasion-cart">
+						
+					</div> -->
+					
+		</div>
+				<div class="clearfix"> </div>
+
+				<div class="bootstrap-tab animated wow slideInUp animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: slideInUp;">
+					<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+						
+						<div id="myTabContent" class="tab-content">
+							
+							<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="profile" aria-labelledby="profile-tab">
+								<div class="bootstrap-tab-text-grids">
+									<div class="bootstrap-tab-text-grid">
+										<div class="bootstrap-tab-text-grid-left">
+											<img src="{% static 'user/images/men3.jpg' %}" alt=" " class="img-responsive">
+										</div>
+										<div class="bootstrap-tab-text-grid-right">
+											<ul>
+												<li><a href="#">Admin</a></li>
+												<li><a href="#"><span class="glyphicon glyphicon-share" aria-hidden="true"></span>Reply</a></li>
+											</ul>
+											
+										</div>
+										<div class="clearfix"> </div>
+									</div>
+									
+									<div class="add-review">
+										<h4>add a review</h4>
+										<form>
+											<input type="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" required="">
+											<input type="email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+											
+											<textarea type="text" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Message...';}" required="">Message...</textarea>
+											<input type="submit" value="SEND">
+										</form>
+									</div>
+								</div>
+							</div>
+							<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="dropdown1" aria-labelledby="dropdown1-tab">
+								<p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+							</div>
+							<div role="tabpanel" class="tab-pane fade bootstrap-tab-text" id="dropdown2" aria-labelledby="dropdown2-tab">
+								<p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+	</div>
+</div>
+<!-- //single -->
+<!-- //product-nav -->
+
+<!-- footer -->
+
+		<div class="col-md-9 footer-right">
+			<div class="col-sm-6 newsleft">
+				
+			</div>
+			<div class="col-sm-6 newsright">
+				
+			</div>
+			<div class="clearfix"></div>
+			<div class="sign-grds">
+				<div class="col-md-4 sign-gd">
+				
+				</div>
+				
+				<div class="col-md-4 sign-gd-two">
+					<h4>Store Information</h4>
+					<ul>
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Address : 1234k Avenue, 4th block, <span>Newyork City.</span></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : <a href="mailto:info@example.com">info@example.com</a></li>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Phone : +1234 567 567</li>
+					</ul>
+				</div>
+				<div class="col-md-4 sign-gd flickr-post">
+					
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<!-- <p class="copy-right">&copy 2016 Smart Shop. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p> -->
+	</div>
+</div>
+<!--  -->
+<!-- //footer -->
+<!-- login -->
+			
+<!-- //login -->
+
+
+
+
+<!-- <script type="text/javascript">
+	console.log('this is test');
+
+	if (localStorage.getItem('cart_add')==null){
+		var cart = {};
+	}else{
+		cart = JSON.parse(localStorage.getItem('cart_add'));
+	}
+	$ (document).on('click','atc',function(){
+      console.log("The 	add to cart button is clicked");
+	  var Item_id = this.id.toString();
+	  console.log(Item_id);
+	  if (cart_add[Item_id] !=undefined ){
+		cart_add[Item_id] = cart_add[Item_id] +1;
+ 	  }else{
+		cart_add[Item_id] = 1;
+		   
+	   }console.log(cart_add);
+	   localStorage.setItem('cart_add',JSON.stringify(cart_add));
+
+	});
+</script> -->
+</html>

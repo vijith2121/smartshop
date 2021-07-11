@@ -1,0 +1,185 @@
+{% extends 'base.html'%}
+
+{% load static%}
+
+{% load crispy_forms_tags %}
+
+
+{% block content%}
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+
+<style>
+  .buttons-csv{
+   
+    background-color: #32325d;
+    color: aliceblue;
+    border-color: bisque;
+    border-radius: 6PX;
+  }
+  .buttons-excel{
+    background-color: #32325d;
+    color: aliceblue;
+    border-color: bisque;
+    border-radius: 6PX;
+  }
+  .buttons-pdf{
+    background-color: #32325d;
+    color: aliceblue;
+    border-color: bisque;
+    border-radius: 6PX;
+  }
+ 
+</style>
+   
+    <title>Report</title>
+</head>
+
+
+    <div class="col-md-12 " >
+      <div class="row">
+      <div class="col-md-3 "></div>
+      <div class="col-md-6 pt-5">
+        <a href="./" style="text-decoration: none;" ><h6><b>Dashboard</b></h6></a>
+      </div>
+    </div>
+    </div>
+  
+  <div class="col-md-2 col-sm-2 col-xs-3 ms-auto m-auto mt-5">
+    <form action="" method="POST">
+        {%csrf_token%}
+        <label for="exampleFormControlFile1"  style="color: aliceblue;">From</label>
+        <input type="date" class="form-control"  id="fromdate" name="datefrom" onclick="fromClick()" onchange="from(event)" value=""  required >
+        <label for="exampleFormControlFile1" style="color: aliceblue;">to</label>
+        <input type="date" class="form-control" onclick="toClick()"  id="todate" name="dateto" required >
+        <br>
+      <div class="p-3"> <button type="submit" style="background-color: #222268; color: aliceblue;" class="btn" >Search</button></div>
+    </form>
+    <div class="pl-4"><a href="#" onclick="location.reload()"> <b>Refresh</b></a></div>
+   
+</div>
+ <div class="col-md-12 m-auto mr-5">
+   <div class="row">
+   <div class="col-md-2"></div>
+   <div class="col-md-9">
+    <table id="example" class="table table-striped text-white  col-md-12  " style="width:100%" >
+      <thead style="border: teal; background-color: #32325d;">
+        <tr >
+          <th scope="col">sl.no</th>
+          <th scope="col">Date </th>
+          <th scope="col">Customer</th>
+          <th scope="col">Contact <br>Number</th>
+          <th scope="col">Status</th>
+          <th scope="col">Qty</th>
+          <th scope="col">Pyment <br> Method</th>
+          <th scope="col">Coupon <br> Discount</th>
+          <th scope="col">Amount</th>
+        </tr>
+      </thead>
+      <tbody style=" color: rgb(228, 233, 241); background-color: rgb(58, 61, 224);">
+          {% for order in orders%}
+        <tr style="background-color: #32325d;">
+          <th scope="row"> {{ forloop.counter }}</th>
+          <td><b>{{order.date}}</b></td>
+         
+          <td ><b>{{order.user.FirstName}}</b></td>
+          <td><b>{{order.user.Phone}}</b></td>
+          <td><b>{{order.status}}</b></td>
+          <td><b>{{order.item.quantity}}</b></td>
+          <td><b>{{order.pay_method}}</b></td>
+          {% if order.coupon_offer is None %}
+          <td> <b> No offer</b></td>
+          {% else %} 
+          <td><b>{{order.coupon_offer}}</b></td>
+          {% endif %}
+          <td><b>{{order.price}}</b></td>
+         </tr>
+         {% endfor %}
+         </tbody>
+         </table>
+       </div>
+      </div>
+    </div>  
+    <div class="col-md-1"></div>
+  </div>
+</div>
+ 
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                dom: 'Bfrtip',
+                buttons: [
+                    'excelHtml5',
+                    'csvHtml5',
+                    'pdfHtml5'
+                ],
+                drawCallback: function () {
+                    var hasRows = this.api().rows({ filter: 'applied' }).data().length > 0;
+                    $('.buttons-csv')[0].style.visibility = hasRows ? 'visible' : 'hidden'
+                    $('.buttons-excel')[0].style.visibility = hasRows ? 'visible' : 'hidden'
+                    $('.buttons-pdf')[0].style.visibility = hasRows ? 'visible' : 'hidden'
+                }
+            } );
+        } );
+        
+      
+        function from(event){
+            var start_date = event.target.value
+            document.getElementById("todate").min=start_date
+        }
+    </script>
+
+    
+    <script>
+      function toClick(){
+        var to = document.getElementById('todate')
+        var from = document.getElementById('fromdate').value
+        console.log(from)
+        if (from == ""){
+          from = "2021-06-01"
+        }
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2,'0');
+        var mm = String(today.getMonth() + 1).padStart(2,'0');
+        var yyyy = today.getFullYear();
+        today = yyyy + '-' + mm + '-' + dd;
+        to.setAttribute("max", today);
+        to.setAttribute("min", from)
+        console.log(today)
+      }
+
+      function fromClick(){
+        var to =document.getElementById('todate').value
+        var from = document.getElementById('fromdate')
+        if (to == ""){
+          var today = new Date();
+          var dd = String(today.getDate()).padStart(2,'0');
+          var mm = String(today.getMonth() + 1).padStart(2,'0');
+          var yyyy = today.getFullYear();
+          today = yyyy + '-' + mm + '-' + dd;
+          to = today;
+        }
+        
+        from.setAttribute("max",to);
+      }
+    </script>
+
+
+
+
+
+
+
+
+{% endblock%}
+
+
+
+
+
+
+

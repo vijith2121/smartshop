@@ -1,0 +1,386 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smart Fashion</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Smart Shop Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<!-- //for-mobile-apps -->
+<link href="{% static 'user/css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+<link rel="stylesheet" href="{% static 'user/css/flexslider.css' %}" type="text/css" media="screen" />
+<link href="{% static 'user/css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+<!-- js -->
+<script type="text/javascript" src="{% static 'user/js/jquery-2.1.4.min.js' %}"></script>
+<!-- //js -->
+<!-- single -->
+<script src="{% static 'user/js/imagezoom.js' %}"></script>
+<script src="{% static 'user/js/jquery.flexslider.js' %}"></script>
+<!-- single -->
+<!-- cart -->
+	<script src="{% static 'user/js/simpleCart.min.js' %}"></script>
+<!-- cart -->
+<!-- for bootstrap working -->
+	<script type="text/javascript" src="{% static 'user/js/bootstrap-3.1.1.min.js' %}"></script>
+<!-- //for bootstrap working -->
+<link href='//fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
+<script src="{% static 'user/js/jquery.easing.min.js' %}"></script>
+<!--style-->
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body{
+	font-family: 'Roboto', sans-serif;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+i {
+	margin-right: 10px;
+}
+
+/*------------------------*/
+input:focus,
+button:focus,
+.form-control:focus{
+	outline: none;
+	box-shadow: none;
+}
+.form-control:disabled, .form-control[readonly]{
+	background-color: #fff;
+}
+.table tr,
+.table tr td{
+	vertical-align: middle;
+}
+.button-container{
+	display: flex;
+	align-items: center;
+}
+.button-container .form-control{
+	max-width: 80px;
+	text-align: center;
+	display: inline-block;
+	margin: 0px 5px;
+}
+#myTable .form-control{
+	width: auto;
+	display: inline-block;
+}
+.cart-qty-plus,
+.cart-qty-minus{
+	width: 38px;
+	height: 38px;
+	background-color: #fff;
+	border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+.cart-qty-plus:hover,
+.cart-qty-minus:hover{
+	background-color: #5161ce;
+	color: #fff;
+}
+.img-prdct{
+	width: 50px;
+	height: 50px;
+/* 	background-color: #5161ce; */
+	border-radius: 4px;
+}
+.img-prdct img{
+  width: 100%;
+}
+</style>
+
+<!--style-->
+</head>
+<body>
+<!-- header -->
+<div class="header">
+	<div class="container">
+		<ul>
+			<li><span class="glyphicon glyphicon-time" aria-hidden="true"></span>Free and Fast Delivery</li>
+			<li><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Free shipping On all orders</li>
+			
+		</ul>
+	</div>
+</div>
+<!-- //header -->
+<!-- header-bot -->
+<div class="header-bot">
+	<div class="container">
+		<div class="col-md-3 header-left">
+			
+		</div>
+		<div class="col-md-6 header-middle">
+			
+		</div>
+		<div class="col-md-3 header-right footer-bottom">
+			<ul>{% if username is None %}
+				<li><a href="#" class="use1" data-toggle="modal" ><span>Login</span></a>
+					
+				</li>
+				{% else %}
+				<li><a href="#" class="use1" data-toggle="modal" ><span>{{ username }}</span></a>
+				{% endif %}
+				
+				<li><a class="twi" href="#"></a></li>
+				<li><a class="twi" href="#"></a></li>
+				<li><a class="insta" href="#"></a></li>
+				<li><a class="insta" href="#"></a></li>
+				
+				<div class="col-md-3 header-right footer-bottom">
+				
+				
+			</ul>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!-- //header-bot -->
+<!-- banner -->
+<div class="ban-top">
+	<div class="container">
+		<div class="top_nav_left">
+			<nav class="navbar navbar-default">
+			  <div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
+				  <ul class="nav navbar-nav menu__list">
+					<li class="active menu__item "><a class="menu__link" href="{% url 'userpage' %}">Home <span class="sr-only">(current)</span></a></li>
+					<li class="dropdown menu__item">
+						
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-sm-6 multi-gd-img1 multi-gd-text ">
+										
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+					</li>
+					<li class="dropdown menu__item">
+						<!-- <a href="{% url 'userlogout' %}">Logout</a> -->
+							<ul class="dropdown-menu multi-column columns-3">
+								<div class="row">
+									<div class="col-sm-3 multi-gd-img">
+										
+									</div>
+									<div class="col-sm-3 multi-gd-img">
+										
+									</div>
+									<div class="col-sm-6 multi-gd-img multi-gd-text ">
+										
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+					
+				  
+				</div>
+			  </div>
+			</nav>	
+		</div>
+		<div class="top_nav_right">
+			<div class="cart box_1">
+						<a href="">
+							<h3> <div class="">
+								<i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>
+							 <span >{{count}}</span>
+                            </div>
+								
+							</h3>
+						</a>
+						<p><a href="{% url 'carthome' %}" class="simpleCart_empty">Cart Item</a></p>
+						
+			</div>	
+		</div>
+		<div class="clearfix"> </div>
+	</div>
+</div>
+<!-- //banner-top -->
+<!-- banner -->
+
+<!-- //banner -->
+<!-- single -->
+
+<div class="container-fluid ">
+   <div class="mt-5"><h2 class="mb-5 text-center " style="color:#FDA30E; margin-top: 80px;">Shopping cart</h2></div> 
+   
+    <div class="row justify-content-center " style="margin-top: 50px;">
+        <div class="col-md-8">
+            <div class="table-responsive">
+                <table id="myTable" class="table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Name</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th class="text-center"><span id="amount" class="amount">Amount</span> </th>
+                        </tr>
+                    </thead>
+					{% if  not cart_items%}
+						<div>
+							<h3  style="margin-left: 600px;" > <b>Cart Items Empty</b>  <br><br></h3> <a  style="margin-left: 600px;" href="{% url 'userpage' %}" style="color: blue;">Continue Shop</a>
+						</div>
+					{% else%}
+					
+                    <tbody>{% for cart_item in cart_items%}
+                        <tr>
+                            <td>
+                                <div class="product-img">
+                                    <div class="img-prdct"><img src="{{ cart_item.product.image1.url }}"></div>
+                                </div>
+                            </td>
+                            <td>
+                                <p>{{ cart_item.product.product}}</p>
+                            </td>
+                            <td>
+                                <div class="button-container">
+                                    <button class="cart-qty-minus" type="button" value=""><a href="{%  url 'remove_cart' cart_item.product.id %}">-</a></button>
+                                    <input type="text" name="qty" min="" class="qty form-control" value="{{ cart_item.quantity }}"/>
+                                    <button class="cart-qty-plus" type="button" value=""><a href="{%  url 'add_cart2' cart_item.product.id %}">+</a></button>
+
+                                   
+                                </div>
+                            </td>
+                            <td>
+                                <input type="text" value="{{ cart_item.product.last_price }}" class="price form-control" disabled>
+                            </td>
+                            <td align="right">INR {{ cart_item.product.last_price }}<span id="amount" class="amount">0</span></td>
+							<td><div class="col">  <a href="{%  url 'remove_cart_item' cart_item.product.id %}" style="color: red;" onclick="return confirm('do you want to remove this item?')" >Remove</a> </div></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4"></td><td align="right"><strong> TOTAL =  INR <span id="total" class="total">0</span></strong></td>
+                        </tr>
+                    </tfoot>
+                </table> 
+            </div>
+        </div><div><button ><a class="btn" href="{% url 'checkout' %}">Place Order</a></button></div> {% endif %}
+    </div> 
+</div>
+<!-- //single -->
+<!-- //product-nav -->
+
+<!-- footer -->
+
+		<div class="col-md-9 footer-right mt-4">
+			<div class="col-sm-6 newsleft">
+				
+			</div>
+			<div class="col-sm-6 newsright">
+				
+			</div>
+			<div class="clearfix"></div>
+			<div class="sign-grds">
+				<div class="col-md-4 sign-gd">
+				
+				</div>
+				
+				<div class="col-md-4 sign-gd-two">
+					<h4>Store Information</h4>
+					<ul>
+						<li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Address : 1234k Avenue, 4th block, <span>Newyork City.</span></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : <a href="mailto:info@example.com">info@example.com</a></li>
+						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Phone : +1234 567 567</li>
+					</ul>
+				</div>
+				<div class="col-md-4 sign-gd flickr-post">
+					
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<!-- <p class="copy-right">&copy 2016 Smart Shop. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p> -->
+	</div>
+</div>
+<!-- //footer -->
+<!-- login -->
+			
+<!-- //login -->
+
+
+
+</body>
+<script>
+	function myFunction(){
+		alert("Item added to Cart !")
+	}
+</script>
+
+ <script>
+    $(document).ready(function(){
+        update_amounts();
+        $('.qty, .price').on('keyup keypress blur change', function(e) {
+            update_amounts();
+        });
+  });
+  function update_amounts(){
+      var sum = 0.0;
+            $('#myTable > tbody  > tr').each(function() {
+              var qty = $(this).find('.qty').val();
+                var price = $(this).find('.price').val();
+                var amount = (qty*price)
+                sum+=amount;
+                $(this).find('.amount').text(''+amount);
+            });
+      $('.total').text(sum);
+  }
+  
+  
+  
+  //----------------for quantity-increment-or-decrement-------
+  var incrementQty;
+  var decrementQty;
+  var plusBtn  = $(".cart-qty-plus");
+  var minusBtn = $(".cart-qty-minus");
+  var incrementQty = plusBtn.click(function() {
+      var $n = $(this)
+          .parent(".button-container")
+          .find(".qty");
+      $n.val(Number($n.val())+1 );
+      update_amounts();
+  });
+  
+  var decrementQty = minusBtn.click(function() {
+          var $n = $(this)
+          .parent(".button-container")
+          .find(".qty");
+      var QtyVal = Number($n.val());
+      if (QtyVal > 0) {
+          $n.val(QtyVal-1);
+      }
+      update_amounts();
+  });
+  
+
+</script>
+</html>
