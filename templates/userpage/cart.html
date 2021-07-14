@@ -261,9 +261,9 @@ button:focus,
                             </td>
                             <td>
                                 <div class="button-container">
-                                    <button class="cart-qty-minus" type="button" value=""><a href="{%  url 'remove_cart' cart_item.product.id %}">-</a></button>
+                                    <a href="{%  url 'remove_cart' cart_item.product.id %}"><b><p><button style="background-color: #d9d9e0;" class="btn">-</button></p></b></a>
                                     <input type="text" name="qty" min="" class="qty form-control" value="{{ cart_item.quantity }}"/>
-                                    <button class="cart-qty-plus" type="button" value=""><a href="{%  url 'add_cart2' cart_item.product.id %}">+</a></button>
+                                  <a href="{%  url 'add_cart2' cart_item.product.id %}"><b><p> <button style="background-color: #d9d9e0;" class="btn">+</button></p></b></a>
 
                                    
                                 </div>
