@@ -122,7 +122,7 @@ def signin(request):
         if user:
             user_id = usermanagement.objects.get(UserName=UserName,Password=Password)
             username = usermanagement.objects.get(id=user_id.id)
-            if user.exists():
+            if user:
                 try:
                     is_exists = cartitem.objects.filter(user=username).exists()
                     if is_exists:
