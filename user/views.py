@@ -22,7 +22,10 @@ from decouple import config
 
 def userpage(request):
     queryset = productmanagement.objects.all()
-    qs = cartitem.objects.all().count()
+    qs=0
+    if request.session.has_key('username'):
+        user = usermanagement.objects.get(UserName=request.session['username'])
+        qs = cartitem.objects.filter(user = user).count()
     context = {'products':queryset,'count':qs}
     
     for i in queryset:
@@ -55,6 +58,16 @@ def view (request,product_id):
         return redirect('userpage2')    
     context = {'product':queryset,'username':username,'count':qs}
     return render(request,'userpage/view.html',context)   
+
+
+
+def view2 (request,product_id):
+    username = request.session.get('username')
+    queryset = productmanagement.objects.get(id=product_id)
+    qs = cartitem.objects.all().count()
+    # user = usermanagement.objects.get(UserName = username)
+    context = {'product':queryset,'username':username,'count':qs}
+    return render(request,'userpage/view2.html',context)
 
 
 
@@ -105,25 +118,27 @@ def signin(request):
     if request.method == 'POST':
         UserName = request.POST['UserName']
         Password = request.POST['Password']
-        user = usermanagement.objects.filter(UserName=UserName,Password=Password)
-        user_id = usermanagement.objects.get(UserName=UserName,Password=Password)
-        username = usermanagement.objects.get(id=user_id.id)
-        if user.exists():
-            try:
-                is_exists = cartitem.objects.filter(user=username).exists()
-                if is_exists:
-                    cart_item = cartitem.objects.filter(user=username)
-            except:
-                pass
-           
-            request.session['username'] = UserName
-            return redirect ('/')  
+        user = usermanagement.objects.filter(UserName=UserName,Password=Password).exists()
+        if user:
+            user_id = usermanagement.objects.get(UserName=UserName,Password=Password)
+            username = usermanagement.objects.get(id=user_id.id)
+            if user.exists():
+                try:
+                    is_exists = cartitem.objects.filter(user=username).exists()
+                    if is_exists:
+                        cart_item = cartitem.objects.filter(user=username)
+                except:
+                    pass
+            
+                request.session['username'] = UserName
+                return redirect ('/')  
 
+            else:
+                messages.info(request,"somethig went wrong")
+                return render(request,'loginpage/userlogin.html') 
         else:
-            messages.info(request,"somethig went wrong")
-            return render(request,'loginpage/userlogin.html') 
-    else:
-        return render(request,'loginpage/userlogin.html')
+            messages.info(request,'Invalid credentials')
+    return render(request,'loginpage/userlogin.html')
 
 #profile details
 

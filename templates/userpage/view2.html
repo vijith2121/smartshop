@@ -145,7 +145,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								
 							</h3>
 						</a>
-						<p><a href="{% url 'carthome' %}" class="simpleCart_empty">Cart Item</a></p>
+						<!-- <p><a href="{% url 'carthome' %}" class="simpleCart_empty">Cart Item</a></p> -->
 						
 			</div>	
 		</div>
@@ -210,11 +210,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<label for="rating1">1</label>
 						</span>
 					</div> -->
-				<form action="{% url 'add_cart' product.id %}" method="POST">
-					{% csrf_token%}
+		
+					
 					<div class="description">
 						
-						<button type="submit" class="btn btn-warning ">Add to Cart</button>
+						<a type="submit" href="{% url 'sighin' %}" class="btn btn-warning ">SignIn</a>
 					
 					</div>
 					   <div class="row"><div class="item-option-select description col-md-3">
@@ -237,7 +237,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					
 					</div>
-				</form>
+		
 					<!-- <div class="occasion-cart">
 						
 					</div> -->
