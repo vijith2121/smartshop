@@ -291,7 +291,10 @@
                         <div class="col text-right" id="grand">INR {{total}}</div>
                     
                     <!-- </div> <a class="btn" id="form-button">Make Payment</a> -->
-                    <button  class="btn" type="submit" form="form-button">Make Payment</button>
+                    
+                   
+                    <button {% if not querryset %} disabled {% endif %}  class="btn" type="submit" form="form-button">Make Payment</button>
+                    
                     <form action="#" method="POST">{% csrf_token%}
                     <div class="row  input pt-2">
                         <div class="col-md-8 mt-4 ">
