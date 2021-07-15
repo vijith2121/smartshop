@@ -46,11 +46,13 @@ def userpage2(request):
 
 
 def view (request,product_id):
-    username = request.session.get('username')
-    queryset = productmanagement.objects.get(id=product_id)
-    qs = cartitem.objects.all().count()
-    user = usermanagement.objects.get(UserName = username)
-    
+    if request.session.has_key('username'):
+        username = request.session.get('username')
+        queryset = productmanagement.objects.get(id=product_id)
+        qs = cartitem.objects.all().count()
+        user = usermanagement.objects.get(UserName = username)
+    else:
+        return redirect('userpage2')    
     context = {'product':queryset,'username':username,'count':qs}
     return render(request,'userpage/view.html',context)   
 
