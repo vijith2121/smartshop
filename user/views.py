@@ -582,8 +582,8 @@ def place_order(request, total = 0 , quantity = 0):
             else:
                 for cart_item in cart_items:
                     total   += (cart_item.product.last_price() * cart_item.quantity)
-                    
             # request.session['tot'] = total
+            request.session['total'] = total
         contex = {'delivery_address' : delivery_address,
                    'total' : total,
                    'quantity': quantity,
@@ -689,6 +689,7 @@ def cod(request,total = 0,quantity=0):
     for cart_item in cart_items:
         total += (cart_item.product.price * cart_item.quantity)
         quantity += cart_item.quantity
+
     uname = request.session['username']
     user = usermanagement.objects.get(UserName = uname)
     order=Ordermanage()
@@ -716,21 +717,21 @@ def cod(request,total = 0,quantity=0):
     
 
 
-
 # paypal
     
 
-def paypal1(request):
-
+def paypal1(request,total=0):
+   
     amount = request.session['total']
     request.session['pay_status']='paypal'
     paisa = amount/70
     
     context = {
         'paisa':paisa,
-       
+        'total':total
+    
     }
-  
+
     return render(request,'userpage/paypal.html',context)
 
 
