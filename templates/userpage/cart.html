@@ -228,7 +228,7 @@ button:focus,
 <!-- single -->
 
 <div class="container-fluid ">
-   <div class="mt-5"><h2 class="mb-5 text-center " style="color:#FDA30E; margin-top: 80px;">Shopping cart</h2></div> 
+   <div class="mt-5"><h2 class="mb-5 text-center " style="color:#FDA30E; margin-top: 80px;"> <b>Shopping cart</b></h2></div> 
    
     <div class="row justify-content-center " style="margin-top: 50px;">
         <div class="col-md-8">
@@ -244,9 +244,15 @@ button:focus,
                         </tr>
                     </thead>
 					{% if  not cart_items%}
-						<div>
-							<h3  style="margin-left: 600px;" > <b>Cart Items Empty</b>  <br><br></h3> <a  style="margin-left: 600px;" href="{% url 'userpage' %}" style="color: blue;">Continue Shop</a>
-						</div>
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-4 mt-6"></div>
+								    <div class="col-md-4 mt-3"></div>
+								    <div class="col-md-4 mt-3"> <a  href="{% url 'userpage' %}" style="color: blue;"><<< Continue Shop</a> <br><br> <h4 style="color: #FDA30E;"><b>Cart Items Empty</b> </h4></div>
+								</div>
+							</div>
+								
+							
 					{% else%}
 					
                     <tbody>{% for cart_item in cart_items%}
