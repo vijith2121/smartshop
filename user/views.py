@@ -152,7 +152,6 @@ def profile(request):
         img = profile_model(user=user)
         img.save()
     form = profile_form(instance=user)
-    forms = UserForm()
     if request.method == 'POST':
         qs = usermanagement.objects.get(UserName = username)
         form = profile_form(request.POST,request.FILES,instance=img)
@@ -168,28 +167,29 @@ def pro_edit(request,id):
         forms = UserForm(request.POST,instance=Item)
         if forms.is_valid():
             forms.save()
+            print(forms)
             return redirect('profile')
     else:
         forms = UserForm(instance=Item)     
-    return redirect('profile')     
+    return render(request,'loginpage/profile_edit.html',{'form':forms})     
 
 
 
 
-def pro_add(request):
-    if request.method == 'POST':
-        address =  UserForm(request.POST)
-        if address.is_valid():
-            newadd = address.save(commit=False)
-            username = request.session['username']
-            user = usermanagement.objects.get (UserName = username)
-            newadd.user = user
-            newadd.save()
-            return redirect('profile')
-        else:
-            form = UserForm
-            context= {'form':form}
-            return render (request,'loginpage/profile.html',context)    
+# def pro_add(request):
+#     if request.method == 'POST':
+#         address =  UserForm(request.POST)
+#         if address.is_valid():
+#             newadd = address.save(commit=False)
+#             username = request.session['username']
+#             user = usermanagement.objects.get (UserName = username)
+#             newadd.user = user
+#             newadd.save()
+#             return redirect('profile')
+#         else:
+#             form = UserForm
+#             context= {'form':form}
+#             return render (request,'loginpage/profile.html',context)    
 
             
         

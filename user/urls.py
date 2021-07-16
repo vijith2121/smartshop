@@ -62,8 +62,8 @@ urlpatterns = [
 
     
     path('profile/',views.profile,name='profile'),
-     path('pro_edit/<int:id>/',views.pro_edit,name='pro_edit'),
-     path('pro_add',views.pro_add,name='pro_add'),
+    path('pro_edit/<int:id>/',views.pro_edit,name='pro_edit'),
+    #  path('pro_add',views.pro_add,name='pro_add'),
     # path('pro',views.pro,name='pro'),
 #    path('dp',views.dp,name='dp'),
 

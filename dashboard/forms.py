@@ -29,7 +29,7 @@ class ProductForm(forms.ModelForm):
 class UserForm(forms.ModelForm):
     class Meta:
         model = usermanagement
-        fields = ('FirstName','Email','UserName','Phone','address')
+        fields = ('FirstName','Email','UserName','Phone','address','dist','pincode')
 
 
 

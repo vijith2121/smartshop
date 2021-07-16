@@ -231,15 +231,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="card">
 									<div class="card-body">
 									<h6 class="card-title font-weight-bold pl-2">{{user.FirstName}}</h6>
-									<p class="card-text  pl-2">{{user.address}}</p>
+									<p class="card-text  pl-2">{{user.UserName}}</p>
 									<p class="card-text  pl-2">{{user.Phone}}</p>
-									<p class="card-text  ">{{user.Email}}</p>
-									<button type="button" id="myBtn" class="btn btn-primary ml-5" data-toggle="modal" data-target="#myModal">Edit</button>
+									<p class="card-text pl-2 ">{{user.Email}}</p>
+									<p class="card-text pl-2 ">{{user.address}}</p>
+									<p class="card-text  pl-2">{{user.dist}}</p>
+									<p class="card-text pl-2 ">{{user.pincode}}</p>
+									<a type="button" href="{% url 'pro_edit' user.id%}" class="btn btn-primary ml-5">Edit</a>
 									</div>
 								</div>
 							</div>
 							<div class="col-md-6 pt-5">
-								<button class="btn btn-primary"  data-toggle="modal" data-target="#addaddress">Add Address</button>
+								
 							</div>
 						
 					</div>
@@ -251,74 +254,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		
 	</div>
 </div>
-            <!-- The Modal -->
-			<div class="col-md-12 ">
-				<div id="myModal" class="modal">
-				  <!-- Modal content -->
-				  <div class="modal-content">
-					<!-- <span class="close">&times;</span> -->
-					<a href="./"> close </a>
-					<form action="{% url 'pro_edit' user.id%}" method="POST">{% csrf_token %}
-						<div class="row ">
-							<div class="col-6 p-4">
-							  <label for="">firstname</label>
-							  <div>{{form.FirstName}}</div>
-							</div>
-							<div class="col p-4">
-								<label for="">Email</label>
-								<div>{{form.Email}}</div>
-							</div>
-						  
-						  <div class="col-6 p-4">
-							<label for="">UserName</label>
-							 <div>{{form.UserName}}</div> 
-						  </div>
-						  <div class="col-6 p-4">
-							<label for="">Phone</label>
-							  <div>{{form.Phone}}</div>
-						  </div>
-						  <div class="col-6 p-4">
-							<label for="">address</label>
-							  <div>{{form.address}}</div>
-						  </div>
-						  <div class="col-6 p-4"><button type="submit" class="btn btn-warning" data-dismiss="modal">Save</button> </div>
-					   </form>
-				  </div>
-				</div>
-			  </div>
-<!--end modal-->
-<!--forst modal-->
-<div class="col-md-12 ">
-	<div id="addaddress" class="modal">
-	  <!-- Modal content -->
-	  <div class="modal-content">
-		<!-- <span class="close">&times;</span> -->
-		<a href="./"> close </a>
-		<form action="{% url 'pro_add' %}" method="POST">{% csrf_token %}
-			<div class="row ">
-				<div class="col-6 p-4">
-				  <label for="">firstname</label>
-				  <div>{{form.FirstName}}</div>
-				</div>
-				<div class="col p-4">
-					<label for="">Email</label>
-					<div>{{form.Email}}</div>
-				</div>
-			  
-			  <div class="col-6 p-4">
-				<label for="">UserName</label>
-				 <div>{{form.UserName}}</div> 
-			  </div>
-			  <div class="col-6 p-4">
-				<label for="">Phone</label>
-				  <div>{{form.Phone}}</div>
-			  </div>
-			  <div class="col-6 p-4">
-				<label for="">address</label>
-				  <div>{{form.address}}</div>
-			  </div>
-			  <div class="col-6 p-4"><button type="submit" class="btn btn-warning" data-dismiss="modal">Save</button> </div>
-		   </form>
+          
 <!--end modal-->
 
 
