@@ -218,7 +218,8 @@ def pro_edit(request,id):
 
 def my_orders(request,total=0, quantity=0, cart_items=None):   
     username = request.session['username']
-    qs = cartitem.objects.all().count()
+    user = usermanagement.objects.get(UserName=request.session['username'])
+    qs = cartitem.objects.filter(user=user).count()
     try:
         cart = Cartadded.objects.get(cart_id = _cart__id(request)) 
     except:
