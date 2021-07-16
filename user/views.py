@@ -427,9 +427,12 @@ def remove_cart(request,product_id):
     if cart_item.quantity > 1:
         cart_item.quantity -= 1
         cart_item.save()
-    else:
-        cart_item.delete()
+    # else:
+
+    #     cart_item.delete()
     return redirect('carthome')    
+
+
 
 def remove_cart_item(request,product_id):
     cart = Cartadded.objects.get(cart_id=_cart__id(request))
@@ -437,6 +440,8 @@ def remove_cart_item(request,product_id):
     cart_item = cartitem.objects.get(product=product,cart=cart)   
     cart_item.delete()
     return redirect('carthome')    
+
+
 
 
 def checkout(request,total=0, quantity=0, cart_items=None):
