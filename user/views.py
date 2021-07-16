@@ -558,6 +558,8 @@ def verify(request,num):
 # place order (payment section)
 
 def place_order(request, total = 0 , quantity = 0):
+    user = usermanagement.objects.get(UserName=request.session['username'])
+    qs = cartitem.objects.filter(user = user).count()
     
     if request.session.has_key('username'):
         address_id = request.POST.get('address') 
@@ -587,6 +589,7 @@ def place_order(request, total = 0 , quantity = 0):
         contex = {'delivery_address' : delivery_address,
                    'total' : total,
                    'quantity': quantity,
+                   'count':qs
 
                   }
         return render (request,'userpage/payment.html',contex)
