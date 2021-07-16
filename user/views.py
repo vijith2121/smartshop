@@ -52,8 +52,9 @@ def view (request,product_id):
     if request.session.has_key('username'):
         username = request.session.get('username')
         queryset = productmanagement.objects.get(id=product_id)
-        qs = cartitem.objects.all().count()
-        user = usermanagement.objects.get(UserName = username)
+        user = usermanagement.objects.get(UserName = request.session['username'])
+        qs = cartitem.objects.filter(user=user).count()
+        
     else:
         return redirect('userpage2')    
     context = {'product':queryset,'username':username,'count':qs}
@@ -64,9 +65,9 @@ def view (request,product_id):
 def view2 (request,product_id):
     username = request.session.get('username')
     queryset = productmanagement.objects.get(id=product_id)
-    qs = cartitem.objects.all().count()
+  
     # user = usermanagement.objects.get(UserName = username)
-    context = {'product':queryset,'username':username,'count':qs}
+    context = {'product':queryset,'username':username}
     return render(request,'userpage/view2.html',context)
 
 
@@ -144,7 +145,8 @@ def signin(request):
 
 def profile(request): 
     username = request.session['username']
-    qs = cartitem.objects.all().count()
+    user = usermanagement.objects.get(UserName=request.session['username'])
+    qs = cartitem.objects.filter(user = user).count()
     user = usermanagement.objects.get(UserName=username)
     try:
         img = profile_model.objects.get(user=user)
@@ -390,7 +392,7 @@ def carthome(request,total=0, quantity=0, cart_items=None):
             if request.session.has_key('username'):
                 user_id = usermanagement.objects.filter(UserName=request.session['username'])
                 cart_items = cartitem.objects.filter(user=user_id[0])
-                qs = cartitem.objects.all().count()
+                # qs = cartitem.objects.filter(user=user_id).count()
                 
                 # return render (request,'loginpage/my_order.html')
 
@@ -406,7 +408,7 @@ def carthome(request,total=0, quantity=0, cart_items=None):
             'total' : total,
             'quantity' : quantity,
             'cart_items' : cart_items,
-            'count':qs
+            
         } 
 
         return render (request,'userpage/cart.html', context)    
